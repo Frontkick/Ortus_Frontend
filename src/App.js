@@ -20,10 +20,10 @@ function App() {
         body: formData
       };
 
-      const apiUrl = 'https://cold-zaria-suckyou-eb2c31ea.koyeb.app/ortus';
+      const apiUrl = 'https://flask-on-koyeb-sucker3699.koyeb.app/api';
       const response = await fetch(apiUrl, requestOptions);
-      const responseData = await response.text();
-      setResponse(responseData);
+      const responseData = await response.json();
+      setResponse(responseData.output);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -77,7 +77,6 @@ function App() {
         <p>Output:</p>
         <pre>{response}</pre>
       </div>
-      {/* <ApiRequestComponent/> */}
     </div>
   );
 }

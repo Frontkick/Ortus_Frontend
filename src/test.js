@@ -1,48 +1,40 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const ApiRequestComponent = () => {
+function CodeProcessor() {
   const [code, setCode] = useState('');
-  const [response, setResponse] = useState(null);
+  const [output, setOutput] = useState('');
 
-  const handleSubmit = async () => {
+  const handleChange = (event) => {
+    setCode(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const formData = new URLSearchParams();
-      formData.append('code', code);
-
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: formData
-      };
-
-      const apiUrl = 'http://127.0.0.1:5000/ortus';
-      const response = await fetch(apiUrl, requestOptions);
-      const responseData = await response.json();
-      setResponse(responseData);
+      const response = await axios.post('https://flask-on-koyeb-sucker3699.koyeb.app/api', { code });
+      setOutput(response.data);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error processing code:', error);
+      setOutput('Error occurred while processing code');
     }
   };
 
   return (
     <div>
-      <input
-        type="text"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Enter code"
-      />
-      <button onClick={handleSubmit}>Send API Request</button>
-      {response && (
-        <div>
-          <h2>Response</h2>
-          <pre>{JSON.stringify(response, null, 2)}</pre>
-        </div>
-      )}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter your code:
+          <textarea value={code} onChange={handleChange} />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <div>
+        <h2>Output:</h2>
+        <pre>{output}</pre>
+      </div>
     </div>
   );
-};
+}
 
-export default ApiRequestComponent;
+export default CodeProcessor;
