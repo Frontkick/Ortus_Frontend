@@ -1,0 +1,65 @@
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.text{
+  width: 30cm;
+  height: 15cm;
+  color: white;
+  background-color: rgb(87, 122, 138);
+  
+}
+.text :hover{
+}
+
+.lang{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.btn{
+  margin-top: 20px;
+}
+.output{}
+
+.details
+{
+  background-color: rgb(238, 191, 133);
+  width: 500px;
+  height: 580px;
+  margin-left: 100px;
+  /* text-align: center; */
+  color: black;
+}
+.editor
+{
+  display: flex;
+  flex: content;
+}
+
+.example
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.example2
+{
+  margin-left: 140px;
+}
+.welcome
+{
+  text-align: center;
+}
