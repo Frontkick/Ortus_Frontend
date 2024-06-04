@@ -20,10 +20,10 @@ function App() {
         body: formData
       };
 
-      const apiUrl = 'https://flask-on-koyeb-sucker3699.koyeb.app/api';
+      const apiUrl = 'https://nutty-berenice-frontkick-d86e1d9a.koyeb.app/ortus';
       const response = await fetch(apiUrl, requestOptions);
-      const responseData = await response.json();
-      setResponse(responseData.output);
+      const responseData = await response.text();
+      setResponse(responseData);
     } catch (error) {
       console.error('Error:', error);
     }
